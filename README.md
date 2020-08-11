@@ -45,6 +45,7 @@ Currently implemented features
 - Observer
 - Subscriber
 - Subscription
+- Sink (SubSink)
 
 ## Subjects
 
@@ -52,6 +53,13 @@ Currently implemented features
 - Behavior Subject
 - Replay Subject
 - Async Subject
+
+## Schedulers
+
+- Sync Scheduler
+- Async Scheduler
+- Interval Scheduler
+- Asap Scheduler
 
 ## Sources
 

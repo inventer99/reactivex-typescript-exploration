@@ -4,7 +4,7 @@ import { OnCompleteFn, OnErrorFn, OnNextFn } from '../observer';
 
 
 export function tap<A>(onNext: OnNextFn<A>, onError?: OnErrorFn, onComplete?: OnCompleteFn): OperatorFn<A, A> {
-    return (source) => new Observable((subscriber) => {
+    return (source) => new Observable<A>((subscriber) => {
         return source.subscribe(
             (value) => {
                 if(onNext) {

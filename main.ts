@@ -1,5 +1,5 @@
 import { Observable } from './reactive';
-import { flatMap, map, sum } from './reactive/operators';
+import { flatMap, map, retry, sum, tap } from './reactive/operators';
 import { from } from './reactive/sources';
 
 
@@ -44,16 +44,25 @@ const myCart = {
 
 // Simulate a db lookup
 function getCart(): Observable<Cart> {
+    let errored = false;
     return new Observable((subscriber) => {
         setTimeout(() => {
-            subscriber.next(myCart);
-            subscriber.complete();
+            if(!errored) {
+                subscriber.error(new Error());
+                errored = true;
+            } else {
+                subscriber.next(myCart);
+                subscriber.complete();
+            }
         }, 500);
     });
 }
 
 
-const cart$ = getCart();
+const cart$ = getCart().pipe(
+    tap<Cart>(console.log, console.error),
+    retry()
+);
 
 const total$ = cart$.pipe(
     map((cart) => cart.items),
