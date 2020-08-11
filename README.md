@@ -7,6 +7,28 @@ My own TypeScript implementation of the observable pattern following ReactiveX.
 
 http://reactivex.io/
 
+# Example
+
+```typescript
+import { range } from './reactive/sources';
+import { filter, map } from './reactive/operators';
+
+// Caluclate all odd squares from 1-10 inclusively
+
+range(1, 11).pipe(
+    filter(x => (x & 1) === 1),
+    map(x => x * x),
+).subscribe(console.log);
+
+/* Outputs:
+1
+9
+25
+49
+81
+*/
+```
+
 # Running
 
 ```bash
