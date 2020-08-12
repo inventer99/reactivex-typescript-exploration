@@ -5,21 +5,20 @@ import { Subscription } from '../subscription';
 
 export function flatMap<A, B>(projector: (value: A) => Observable<B>): OperatorFn<A, B> {
     return (source) => new Observable<B>((subscriber) => {
+        let canComplete = true, completed = false;
         const subscriptions: Array<Subscription> = [];
 
         const cleanup = () => subscriptions.forEach((subscription) => {
             subscription.unsubscribe();
         });
 
-        subscriptions.push(source.subscribe(
+        const subscription = source.subscribe(
             (value) => {
                 try {
                     const projected = projector(value);
 
-                    const subscription = projected.subscribe(
-                        (projectedValue) => {
-                            subscriber.next(projectedValue);
-                        },
+                    const projectedSubscription = projected.subscribe(
+                        (projectedValue) => subscriber.next(projectedValue),
                         (error) => {
                             cleanup();
                             subscriber.error(error);
@@ -27,10 +26,17 @@ export function flatMap<A, B>(projector: (value: A) => Observable<B>): OperatorF
                         () => {
                             queueMicrotask(() => {
                                 subscriptions.splice(subscriptions.indexOf(subscription), 1);
+                                if(subscriptions.length === 0) {
+                                    canComplete = true;
+                                    if(completed) {
+                                        subscriber.complete();
+                                    }
+                                }
                             });
                         }
                     );
-                    subscriptions.push(subscription);
+                    subscriptions.push(projectedSubscription);
+                    canComplete = false;
                 } catch(error) {
                     subscriber.error(error);
                 }
@@ -40,12 +46,15 @@ export function flatMap<A, B>(projector: (value: A) => Observable<B>): OperatorF
                 subscriber.error(error);
             },
             () => {
-                cleanup();
-                subscriber.complete();
+                completed = true;
+                if(canComplete) {
+                    subscriber.complete();
+                }
             }
-        ));
+        );
 
         return new Subscription(() => {
+            subscription.unsubscribe();
             cleanup();
         });
     });

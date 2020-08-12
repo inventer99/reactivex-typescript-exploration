@@ -1,5 +1,5 @@
 import { Observable } from './reactive';
-import { flatMap, map, retry, sum, tap } from './reactive/operators';
+import { flatMap, groupBy, map, retry, sum } from './reactive/operators';
 import { from } from './reactive/sources';
 
 
@@ -60,15 +60,28 @@ function getCart(): Observable<Cart> {
 
 
 const cart$ = getCart().pipe(
-    tap<Cart>(console.log, console.error),
     retry()
 );
 
-const total$ = cart$.pipe(
+const items$ = cart$.pipe(
     map((cart) => cart.items),
-    flatMap((items) => from(items)),
+    flatMap((items) => from(items))
+);
+
+const total$ = items$.pipe(
     map((item) => item.price * item.quantity),
     sum()
 );
 
+const byQuantity$ = items$.pipe(
+    groupBy((item) => item.quantity),
+    flatMap((group) => {
+        const rng = Math.random();
+        return group.pipe(
+            map((item) => `[${rng}] ${item.name}`)
+        );
+    })
+);
+
 total$.subscribe(debugObserver('total$'));
+byQuantity$.subscribe(debugObserver('byQuantity$'));

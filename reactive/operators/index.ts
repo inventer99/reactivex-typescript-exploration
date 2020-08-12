@@ -1,13 +1,13 @@
 // Transforming
 export * from './buffer';
 export * from './flat-map';
-// export * from './group-by';
+export * from './group-by';
 export * from './map';
 export * from './scan';
 export * from './window';
 
 // Filtering
-// export * from './debounce';
+export * from './debounce';
 export * from './distinct';
 export * from './element-at';
 export * from './filter';

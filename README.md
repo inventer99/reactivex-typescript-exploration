@@ -13,7 +13,7 @@ http://reactivex.io/
 import { range } from './reactive/sources';
 import { filter, map } from './reactive/operators';
 
-// Caluclate all odd squares from 1-10 inclusively
+// Caluclate the square of all odd numbers from 1-10 inclusively
 
 range(1, 11).pipe(
     filter(x => (x & 1) === 1),
@@ -80,11 +80,13 @@ Currently implemented features
 #### Transforming
 - Buffer
 - Flat Map
+- Group By
 - Map
 - Scan
 - Window
 
 #### Filtering
+- Debounce
 - Distinct
 - Element At
 - Filter
@@ -98,19 +100,39 @@ Currently implemented features
 - Take Last
 
 #### Combining
-TODO
+- And (TODO)
+- Then (TODO)
+- When (TODO)
+- Combine Latest (TODO)
+- Join (TODO)
+- Merge (TODO)
+- Start With (TODO)
+- Switch (TODO)
+- Zip (TODO)
 
 #### Error Handling
 - Catch Error
 - Retry
 
 #### Observable Utility
+- Delay (TODO)
 - Tap
+- Materialize (TODO)
+- Dematerialize (TODO)
+- Observe On (TODO)
+- Serialize (TODO)
+- Subscribe On (TODO)
+- Time Interval (TODO)
+- Timeout (TODO)
+- Timestamp (TODO)
+- Using (TODO)
 
 #### Conditional and Boolean
 - All
+- Amb (TODO)
 - Contains
 - Default If Empty
+- Sequence Equal (TODO)
 - Skip Until
 - Skip While
 - Take Until
@@ -118,6 +140,7 @@ TODO
 
 #### Mathematical and Aggregate
 - Average
+- Concat (TODO)
 - Count
 - Max
 - Min
@@ -128,7 +151,10 @@ TODO
 TODO
 
 #### Connectable Observable
-TODO
+- Connect (TODO)
+- Publish (TODO)
+- Ref Count (TODO)
+- Replay (TODO)
 
 #### Convert
-TODO
+- To (TODO)
