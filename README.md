@@ -75,6 +75,9 @@ Currently implemented features
 - Start
 - Timer
 
+#### Aggregate
+- Concat
+
 ## Operators
 
 #### Transforming
@@ -140,7 +143,7 @@ Currently implemented features
 
 #### Mathematical and Aggregate
 - Average
-- Concat (TODO)
+- Concat With (Concat)
 - Count
 - Max
 - Min

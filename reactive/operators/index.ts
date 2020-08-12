@@ -61,7 +61,7 @@ export * from './take-while';
 
 // Mathematical and Aggregate
 export * from './average';
-// export * from './concat';
+export * from './concat-with';
 export * from './count';
 export * from './max';
 export * from './min';

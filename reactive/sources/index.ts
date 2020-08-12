@@ -10,3 +10,6 @@ export * from './range';
 export * from './repeat';
 export * from './start';
 export * from './timer';
+
+// Aggregate
+export * from './concat';
