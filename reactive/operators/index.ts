@@ -24,7 +24,7 @@ export * from './take-last';
 // export * from './and';
 // export * from './then';
 // export * from './when';
-// export * from './combine-latest';
+export * from './with-latest-from';
 // export * from './join';
 // export * from './merge';
 // export * from './start-with';

@@ -7,7 +7,7 @@ import { asyncScheduler } from '../schedulers';
 
 export function delay<A>(delay: number): OperatorFn<A, A> {
     return (source) => new Observable<A>((subscriber) => {
-        const jobs: Array<PendingJob> = [];
+        const jobs = new Set<PendingJob>();
         let completed = false;
 
         const cancelJobs = () => {
@@ -20,12 +20,12 @@ export function delay<A>(delay: number): OperatorFn<A, A> {
             (value) => {
                 const job = asyncScheduler.schedule(() => {
                     subscriber.next(value);
-                    jobs.splice(jobs.indexOf(job), 1);
-                    if(completed) {
+                    jobs.delete(job);
+                    if(completed && jobs.size === 0) {
                         subscriber.complete();
                     }
                 }, delay);
-                jobs.push(job);
+                jobs.add(job);
             },
             (error) => {
                 cancelJobs();
@@ -33,7 +33,7 @@ export function delay<A>(delay: number): OperatorFn<A, A> {
             },
             () => {
                 completed = true;
-                if(jobs.length === 0) {
+                if(jobs.size === 0) {
                     subscriber.complete();
                 }
             }

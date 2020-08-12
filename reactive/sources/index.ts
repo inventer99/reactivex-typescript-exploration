@@ -11,5 +11,8 @@ export * from './repeat';
 export * from './start';
 export * from './timer';
 
+// Combining
+export * from './combine-latest';
+
 // Aggregate
 export * from './concat';

@@ -75,6 +75,9 @@ Currently implemented features
 - Start
 - Timer
 
+#### Combining
+- Combine Latest
+
 #### Aggregate
 - Concat
 
@@ -106,7 +109,7 @@ Currently implemented features
 - And (TODO)
 - Then (TODO)
 - When (TODO)
-- Combine Latest (TODO)
+- With Latest From (TODO)
 - Join (TODO)
 - Merge (TODO)
 - Start With (TODO)
