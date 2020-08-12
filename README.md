@@ -56,17 +56,17 @@ Currently implemented features
 
 ## Schedulers
 
-- Sync Scheduler
-- Async Scheduler
-- Interval Scheduler
-- Asap Scheduler
+- Sync Scheduler (`fn();`)
+- Async Scheduler (`setTimeout(fn, delay);`)
+- Interval Scheduler (`setInterval(fn, delay);`)
+- Asap Scheduler (`setTimeout(fn, 0);`)
 
 ## Sources
 
 - Defer
 - Empty
 - Never
-- Error
+- Error (Throw)
 - From
 - Interval
 - Just
@@ -111,11 +111,11 @@ Currently implemented features
 - Zip (TODO)
 
 #### Error Handling
-- Catch Error
+- Catch Error (Catch)
 - Retry
 
 #### Observable Utility
-- Delay (TODO)
+- Delay
 - Tap
 - Materialize (TODO)
 - Dematerialize (TODO)

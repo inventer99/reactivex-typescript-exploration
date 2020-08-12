@@ -36,7 +36,7 @@ export * from './catch-error';
 export * from './retry';
 
 // Observable Utility
-// export * from './delay';
+export * from './delay';
 export * from './tap';
 // export * from './materialize';
 // export * from './dematerialize';

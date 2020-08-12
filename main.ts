@@ -1,6 +1,6 @@
 import { Observable } from './reactive';
-import { flatMap, groupBy, map, retry, sum } from './reactive/operators';
-import { from } from './reactive/sources';
+import { delay, flatMap, groupBy, map, sum, tap } from './reactive/operators';
+import { from, just } from './reactive/sources';
 
 
 const debugObserver = (name) => ({
@@ -44,24 +44,15 @@ const myCart = {
 
 // Simulate a db lookup
 function getCart(): Observable<Cart> {
-    let errored = false;
-    return new Observable((subscriber) => {
-        setTimeout(() => {
-            if(!errored) {
-                subscriber.error(new Error());
-                errored = true;
-            } else {
-                subscriber.next(myCart);
-                subscriber.complete();
-            }
-        }, 500);
-    });
+    console.log('called');
+    return just(myCart).pipe(
+        delay(500),
+        tap(() => console.log('emitted'))
+    );
 }
 
 
-const cart$ = getCart().pipe(
-    retry()
-);
+const cart$ = getCart();
 
 const items$ = cart$.pipe(
     map((cart) => cart.items),
