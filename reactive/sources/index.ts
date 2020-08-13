@@ -13,6 +13,8 @@ export * from './timer';
 
 // Combining
 export * from './combine-latest';
+export * from './merge';
+// export * from './zip';
 
 // Aggregate
 export * from './concat';

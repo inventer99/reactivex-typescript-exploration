@@ -26,10 +26,10 @@ export * from './take-last';
 // export * from './when';
 export * from './with-latest-from';
 // export * from './join';
-// export * from './merge';
-// export * from './start-with';
+export * from './merge-with';
+export * from './start-with';
 // export * from './switch';
-// export * from './zip';
+// export * from './zip-with';
 
 // Error Handling
 export * from './catch-error';
@@ -42,10 +42,10 @@ export * from './tap';
 // export * from './dematerialize';
 // export * from './observe-on'; // need schedulers
 // export * from './serialize';
-// export * from './subscribe-on';
-// export * from './time-interval';
-// export * from './timeout';
-// export * from './timestamp';
+export * from './subscribe-on';
+export * from './time-interval';
+export * from './timeout';
+export * from './timestamp';
 // export * from './using';
 
 // Conditional and Boolean

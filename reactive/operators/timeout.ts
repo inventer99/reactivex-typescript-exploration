@@ -5,17 +5,21 @@ import { asyncScheduler } from '../schedulers';
 import { PendingJob } from '../scheduler';
 
 
-export function debounce<A>(delay: number): OperatorFn<A, A> {
-    return (source) => new Observable<A>((subscriber) => {
+export function timeout<A>(delay: number): OperatorFn<A, A> {
+    return (source) => new Observable((subscriber) => {
         let currentJob: PendingJob;
         const subscription = source.subscribe(
             (value) => {
+                subscriber.next(value);
+
                 if(currentJob) {
                     currentJob.cancel();
                 }
 
                 currentJob = asyncScheduler.schedule(() => {
-                    subscriber.next(value);
+                    if(!subscriber.isClosed()) {
+                        subscriber.error('timeout');
+                    }
                 }, delay);
             },
             (error) => subscriber.error(error),

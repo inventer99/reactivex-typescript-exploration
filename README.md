@@ -111,8 +111,8 @@ Currently implemented features
 - When (TODO)
 - With Latest From (TODO)
 - Join (TODO)
-- Merge (TODO)
-- Start With (TODO)
+- Merge
+- Start With
 - Switch (TODO)
 - Zip (TODO)
 
@@ -127,10 +127,10 @@ Currently implemented features
 - Dematerialize (TODO)
 - Observe On (TODO)
 - Serialize (TODO)
-- Subscribe On (TODO)
-- Time Interval (TODO)
-- Timeout (TODO)
-- Timestamp (TODO)
+- Subscribe On
+- Time Interval
+- Timeout
+- Timestamp
 - Using (TODO)
 
 #### Conditional and Boolean
