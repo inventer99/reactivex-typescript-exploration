@@ -1,5 +1,3 @@
-export const noop = () => {};
-
 export const isArray = <T>(value: any): value is Array<T> => value instanceof Array;
 
 export const isArrayLike = <T>(value: any): value is ArrayLike<T> => value && typeof value.length === 'number' && typeof value !== 'function';

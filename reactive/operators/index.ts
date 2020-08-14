@@ -38,19 +38,18 @@ export * from './retry';
 // Observable Utility
 export * from './delay';
 export * from './tap';
-// export * from './materialize';
-// export * from './dematerialize';
+export * from './materialize';
+export * from './dematerialize';
 // export * from './observe-on'; // need schedulers
 // export * from './serialize';
 export * from './subscribe-on';
 export * from './time-interval';
 export * from './timeout';
 export * from './timestamp';
-// export * from './using';
 
 // Conditional and Boolean
 export * from './all';
-// export * from './amb';
+export * from './amb-with';
 export * from './contains';
 export * from './default-if-empty';
 // export * from './sequence-equal';
@@ -78,4 +77,4 @@ export * from './sum';
 // export * from './replay';
 
 // Convert
-// export * from './to';
+export * from './to';

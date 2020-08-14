@@ -77,6 +77,10 @@ Currently implemented features
 
 #### Combining
 - Combine Latest
+- Merge
+
+#### Conditional
+- Amb
 
 #### Aggregate
 - Concat
@@ -123,19 +127,19 @@ Currently implemented features
 #### Observable Utility
 - Delay
 - Tap
-- Materialize (TODO)
-- Dematerialize (TODO)
+- Materialize
+- Dematerialize
 - Observe On (TODO)
 - Serialize (TODO)
 - Subscribe On
 - Time Interval
 - Timeout
 - Timestamp
-- Using (TODO)
+- Using
 
 #### Conditional and Boolean
 - All
-- Amb (TODO)
+- Amb With (Amb) 
 - Contains
 - Default If Empty
 - Sequence Equal (TODO)
@@ -163,4 +167,5 @@ TODO
 - Replay (TODO)
 
 #### Convert
-- To (TODO)
+- To Array
+- To Set
